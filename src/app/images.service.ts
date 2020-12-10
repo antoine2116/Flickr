@@ -8,9 +8,8 @@ import { Observable } from 'rxjs';
 
 export class ImagesService {
   constructor(private http : HttpClient) { }
-
-  getImages() : Observable<any> {
-    var tag: string = "sport";
+  
+  getImages(tag : string) : Observable<any> {
     var api_key: string = "cce8a0825f735753d24813e640afe367"; 
     var url = "https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1";
     url += "&api_key=" + api_key;
