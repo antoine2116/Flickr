@@ -1,0 +1,63 @@
+.modalCustom{
+  border-radius: 15px !important;
+  border: solid 1px grey;
+}
+
+.image {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  height: 500px;
+  width: 600px;
+  background-color: white;
+}
+
+.infos {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  height: 500px;
+  background-color: #F3F1F1;
+  position: relative;
+
+}
+
+.margin-top {
+  margin-top: 15px;
+
+}
+.margin-left{
+  margin-left: 10px;
+}
+.margin-left{
+  margin-right: 10px;
+}
+.margin-left1{
+  margin-left: 25px;
+}
+
+.locaSize {
+  font-size: 12px;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.listTag{
+  font-size: 12px;
+  margin-top: 2px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
+
+.footer{
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  border-bottom-right-radius: 15px;
+}
+
+.textDroite{
+  margin-left: 9em;
+}
