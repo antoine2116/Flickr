@@ -1,4 +1,9 @@
-<div class="card">
-    <img *ngFor="let image of images" src="{{image.url}}">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <a href="https://www.journaldugeek.com/content/uploads/2019/12/baby-yoda-720x480.jpg" class="thumbnail">
+        <img class="img-responsive img-thumbnail float" *ngFor="let image of images" src="{{image.url}}">
+      </a>
+    </div>
+  </div>
 </div>
-
