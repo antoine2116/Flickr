@@ -11,7 +11,7 @@ import { FlickrImage} from '../shared/flickrImage.model'
 export class ResultsComponent implements OnInit {
 
   constructor(private imagesSerivce: ImagesService) { }
-  results: FlickrImage[] = [];
+  images: FlickrImage[] = [];
 
   ngOnInit(): void {
     this.imagesSerivce.getImages().subscribe(
@@ -24,7 +24,7 @@ export class ResultsComponent implements OnInit {
             var url: string = `https://live.staticflickr.com/${serverId}/${id}_${secret}.jpg`;
 
             var image = new FlickrImage(id, url);
-            this.results.push(image);
+            this.images.push(image);
           });
         }, 
         (error) => {
