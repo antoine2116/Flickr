@@ -1,4 +1,4 @@
-export class FlickrCommentaires{
+export class FlickrCommentairesModel{
   id: string;
   name: string;
   date: string;
