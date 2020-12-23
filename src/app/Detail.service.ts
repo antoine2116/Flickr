@@ -10,8 +10,9 @@ export class DetailService {
   constructor(private http : HttpClient) {
   }
 
-  getInfosImage(): Observable<any> {
-    const idPhoto = '50702402907';
+  getInfosImage(idphoto : string): Observable<any> {
+    console.log(idphoto);
+    const idPhoto = idphoto;
     const api_key = 'cce8a0825f735753d24813e640afe367';
     let url = 'https://www.flickr.com/services/rest/?method=flickr.photos.getInfo&format=json&nojsoncallback=1';
     url += '&api_key=' + api_key;

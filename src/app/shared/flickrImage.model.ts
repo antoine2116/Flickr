@@ -1,5 +1,5 @@
 export class FlickrImage {
-    id: string;
+  id: string;
     url : string;
     constructor(id, url) {
         this.id = id;

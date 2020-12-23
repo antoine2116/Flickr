@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 import {DetailService } from "../Detail.service";
 import {FlickrImageInfos} from "../shared/flickrImageInfos.model";
+import {FlickrImage} from "../shared/flickrImage.model";
 
 @Component({
   selector: 'app-details',
@@ -14,15 +15,21 @@ export class DetailsComponent implements OnInit {
   tags : string[];
   date : string;
   views : bigint;
+  url : string;
   infoImage : string[] = [];
+
+
+
   constructor(private detailService: DetailService) { }
 
   ngOnInit(): void {
 
-    this.detailService.getInfosImage().subscribe(
+  }
+  afficherDetails($event: FlickrImage): void {
+    this.detailService.getInfosImage($event.id).subscribe(
       data => {
       let infosFlick = new FlickrImageInfos(data.photo);
-      console.log(infosFlick.localisation);
+      this.url = $event.url;
       this.username = infosFlick.username;
       this.localisation = infosFlick.localisation;
       this.titre = infosFlick.description;
@@ -34,7 +41,7 @@ export class DetailsComponent implements OnInit {
         console.log(error);
       },
       () => {
-        console.log("J'ai fini");
+        console.log("C'est good!");
       }
     );
   }

@@ -9,7 +9,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class ResearchComponent implements OnInit {
   @Output() tagEmitter = new EventEmitter<string>();
   tag: string = "";
-  
+
   constructor() { }
 
   ngOnInit(): void {
@@ -17,5 +17,6 @@ export class ResearchComponent implements OnInit {
 
   emitResearch() {
     this.tagEmitter.emit(this.tag);
+
   }
 }
