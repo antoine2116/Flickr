@@ -60,6 +60,23 @@
   width: 100%;
 }
 
+.modal{
+  border-radius: 20px !important;
+}
+
+#imgdetail{
+  width:100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+
+}
+#contentImage{
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .name{
   font-size: 0.9em;
   font-weight: bold;
