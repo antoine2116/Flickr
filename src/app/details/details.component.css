@@ -59,3 +59,18 @@
   overflow-y: scroll;
   width: 100%;
 }
+
+.name{
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #4559c8;
+}
+
+.comment{
+  font-size: 0.8em;
+}
+
+ul{
+  margin: 0.7em;
+  padding: 0px;
+}

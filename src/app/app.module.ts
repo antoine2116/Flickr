@@ -7,16 +7,18 @@ import { DetailsComponent } from './details/details.component';
 
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
+import {CommentsComponent} from "./comments/comments.component";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ResearchComponent,
-    ResultsComponent,
-    DetailsComponent
+    declarations: [
+        AppComponent,
+        ResearchComponent,
+        ResultsComponent,
+        DetailsComponent,
+        CommentsComponent
 
-  ],
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,

@@ -24,36 +24,10 @@
             <hr>
             <div class="row margin-top margin-left">
                 <div id="blocCom">
-                  <p>
-                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                  </p>
-                  <p>
-                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                  </p><p>
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </p><p>
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </p><p>
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </p><p>
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </p><p>
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </p><p>
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </p><p>
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </p><p>
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </p><p>
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </p><p>
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </p><p>
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </p><p>
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </p>
+                  <ul *ngFor="let comment of commentaires;">
+                    <span class="name">{{comment.name}}</span>:
+                    <span class="comment">{{comment.content}}</span>
+                  </ul>
                 </div>
             </div>
 
@@ -62,7 +36,6 @@
               <span class="textDroite">{{date}}</span>
             </div>
           </div>
-
         </div>
       </div>
     </div>
