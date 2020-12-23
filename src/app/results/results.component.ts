@@ -10,7 +10,8 @@ import {DetailsComponent} from "../details/details.component";
 })
 
 export class ResultsComponent implements OnInit {
-  constructor(private imagesSerivce: ImagesService) { }
+  constructor(private imagesService: ImagesService) { }
+
   @ViewChild(DetailsComponent) detailsComponent: DetailsComponent;
 
   images: FlickrImage[] = [];
@@ -22,7 +23,7 @@ export class ResultsComponent implements OnInit {
   }
 
   research($event): void {
-    this.imagesSerivce.getImages($event).subscribe(
+    this.imagesService.getImages($event).subscribe(
       (data) => {
         this.images = [];
         data.photos.photo.forEach(el => {
@@ -46,6 +47,7 @@ export class ResultsComponent implements OnInit {
   }
 
   @Output() tagEmitter = new EventEmitter<string>();
+
 
   imgEmitter(e) {
     this.detailsComponent.afficherDetails(e);
