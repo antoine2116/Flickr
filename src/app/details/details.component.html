@@ -6,7 +6,7 @@
           <div class="col-md-6 image">
             <img src="{{url}}">
           </div>
-          <div class="col-md-4 infos">
+          <div class="col-md-6 infos">
             <div class="enTete margin-left">
               <h5 class="margin-top ">{{username}}</h5>
               <p class="locaSize">{{localisation}}</p>
@@ -16,10 +16,45 @@
               <h6 class="margin-left1 center">{{titre}}</h6>
 
             </div>
-            <div class="row margin-top margin-left margin-right">
+            <div class="row margin-top margin-left margin-right" style="max-height: 100px; overflow-y: scroll;">
               <ul class="listTag badge badge-pill badge-light" *ngFor="let tag of tags; let index = index;">
                 <span class="">{{tag}}</span>
               </ul>
+            </div>
+            <hr>
+            <div class="row margin-top margin-left">
+                <div id="blocCom">
+                  <p>
+                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                  </p>
+                  <p>
+                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                  </p><p>
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p><p>
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p><p>
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p><p>
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p><p>
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p><p>
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p><p>
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p><p>
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p><p>
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p><p>
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p><p>
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p><p>
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p>
+                </div>
             </div>
 
             <div class="row footer">
@@ -27,40 +62,7 @@
               <span class="textDroite">{{date}}</span>
             </div>
           </div>
-          <div class="col-md-2">
-            <div style="max-height: 200px; background-color: blueviolet !important; overflow-y: scroll">
-                <p>
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </p>
-              <p>
-                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-              </p><p>
-              aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </p><p>
-              aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </p><p>
-              aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </p><p>
-              aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </p><p>
-              aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </p><p>
-              aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </p><p>
-              aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </p><p>
-              aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </p><p>
-              aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </p><p>
-              aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </p><p>
-              aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </p><p>
-              aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </p>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

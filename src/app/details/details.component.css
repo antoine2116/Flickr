@@ -53,3 +53,9 @@
 .textDroite{
   margin-left: 9em;
 }
+
+#blocCom{
+  max-height: 200px;
+  overflow-y: scroll;
+  width: 100%;
+}
