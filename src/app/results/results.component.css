@@ -1,17 +1,16 @@
-.container{
-  min-width: 120%;
-  margin-left: -10%;
+.gallery {
+  -webkit-column-count: 5;
+  -moz-column-count: 5;
+  column-count: 5;
+  -webkit-column-width: 20%;
+  -moz-column-width: 20%;
+  column-width: 20%; 
+  column-gap: 3px;
 }
 
-.img-thumbnail{
-  height: 20em;
-  width: 20em;
-  object-fit: contain;
-  margin: 0.5em;
-}
-
-.col-xs-3{
-  display: block;
+.container-researsh {
+  width:600px; 
   margin-left: auto;
-  margin-right: auto
+  margin-right:auto;
+  margin-bottom: 10px;
 }

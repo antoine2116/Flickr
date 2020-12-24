@@ -1,8 +1,74 @@
-<div class="container">
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" (keyup.enter)="emitResearch()" [(ngModel)]="tag" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-    <div class="input-group-append">
-      <button class="btn btn-primary" (click)="emitResearch()">Recherche</button>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <button class="btn btn-pink font-weight-bold" type="button" data-toggle="collapse" data-target="#collapseExample"
+      aria-expanded="false" aria-controls="collapseExample">
+      +
+    </button>
+  </div>
+  <input type="text" [(ngModel)]="filtre.text" class="form-control" (keyup.enter)="emitResearch()" placeholder="Photos, personnes...">
+  <div class="input-group-append">
+    <button class="btn btn-primary" (click)="emitResearch()">Rechercher</button>
+  </div>
+</div>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body pl-3 pt-2">
+    <div class="form-row">
+      <div class="col-9">
+        <div class="form-row">
+          <div class="col-4">
+            <label class="col-form-label-sm custom-label">Date minimum</label>
+            <input [(ngModel)]="filtre.dateMin" type="date" class="form-control form-control-sm custom-ipt-date">
+          </div>
+          <div class="col-4">
+            <label class="col-form-label-sm custom-label">NSFW</label>
+            <select [(ngModel)]="filtre.nsfw" class="form-control form-control-sm">
+              <option value="">Aucun</option>
+              <option value="1">Securisé</option>
+              <option value="2">Modéré</option>
+              <option value="3">Restreint</option>
+            </select>
+          </div>
+          <div class="col-4">
+            <label class="col-form-label-sm custom-label">Tri</label>
+            <select [(ngModel)]="filtre.tri" class="form-control form-control-sm">
+              <option value="">Aucun</option>
+              <option value="date-posted-desc">Plus récent</option>
+              <option value="date-posted-asc">Mois récent</option>
+              <option value="interestingness-desc">Plus populaire</option>
+              <option value="interestingness-asc">Moins populaire</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-4">
+            <label class="col-form-label-sm custom-label">Date maximum</label>
+            <input [(ngModel)]="filtre.dateMax" type="date" class="form-control form-control-sm custom-ipt-date">
+          </div>
+          <div class="col-4">
+            <label class="col-form-label-sm custom-label">Type contenu</label>
+            <select [(ngModel)]="filtre.type" class="form-control form-control-sm">
+              <option value="">Tout</option>
+              <option value="1">Photos</option>
+              <option value="2">Screenshots</option>
+              <option value="3">Autre</option>
+            </select>
+          </div>
+          <div class="col-4">
+            <label class="col-form-label-sm custom-label">Contexte</label>
+            <select [(ngModel)]="filtre.contexte" class="form-control form-control-sm">
+              <option value="">Tout</option>
+              <option value="1">Intérieur</option>
+              <option value="2">Extérieur</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="col-form-label-sm custom-label">Tags populaires</label>
+        <select [(ngModel)]="filtre.tags" multiple class="form-control form-control-sm">
+          <option *ngFor="let tag of tags" value="{{tag}}">{{tag[0].toUpperCase() + tag.substr(1).toLowerCase()}}</option>
+        </select>
+      </div>
     </div>
   </div>
 </div>
