@@ -7,8 +7,12 @@
 <div class="gallery" id="gallery">
   <!-- Grid column -->
   <div class="mb-3 pics">
-    <a href="https://www.journaldugeek.com/content/uploads/2019/12/baby-yoda-720x480.jpg" class="thumbnail">
+    <a class="thumbnail" data-toggle="modal" data-target="#exampleModalCenter">
       <img class="img-fluid pb-1" *ngFor="let image of images" src="{{image.url}}">
     </a>
   </div>
 </div>
+
+<app-details>
+
+</app-details>

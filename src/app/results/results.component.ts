@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, ViewChild} from '@angular/core';
 import { ImagesService } from '../images.service';
 import { FlickrImage} from '../shared/flickrImage.model'
+import {DetailsComponent} from "../details/details.component";
 
 @Component({
   selector: 'app-results',
@@ -9,14 +10,20 @@ import { FlickrImage} from '../shared/flickrImage.model'
 })
 
 export class ResultsComponent implements OnInit {
-  constructor(private imagesSerivce: ImagesService) { }
+  constructor(private imagesService: ImagesService) { }
+
+  @ViewChild(DetailsComponent) detailsComponent: DetailsComponent;
+
   images: FlickrImage[] = [];
-  
+  url = "";
+  id = 0;
+  imgDetail: any = {};
+
   ngOnInit(): void {
   }
 
   research($event): void {
-    this.imagesSerivce.getImages($event).subscribe(
+    this.imagesService.getImages($event).subscribe(
       (data) => {
         this.images = [];
         data.photos.photo.forEach(el => {
@@ -25,11 +32,11 @@ export class ResultsComponent implements OnInit {
           var secret: string = el.secret;
 
           var url: string = `https://live.staticflickr.com/${serverId}/${id}_${secret}.jpg`;
-        
+
           var image = new FlickrImage(id, url);
           this.images.push(image);
         });
-      }, 
+      },
       (error) => {
         console.log(error);
       },
@@ -38,4 +45,15 @@ export class ResultsComponent implements OnInit {
       }
   );
   }
+
+  @Output() tagEmitter = new EventEmitter<string>();
+
+
+  imgEmitter(e) {
+    this.detailsComponent.afficherDetails(e);
+  }
+
+
 }
+
+

@@ -1,25 +1,44 @@
-<div class="row modalCustom">
-  <div class="col-md-8 image"></div>
-    <div class="col-md-4 infos">
-        <div class="enTete margin-left">
-          <h5 class="margin-top ">{{username}}</h5>
-          <p class="locaSize">{{localisation}}</p>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div class="row modalCustom">
+          <div  id="contentImage" class="col-md-6 image">
+            <img id="imgdetail" src="{{url}}">
+          </div>
+          <!-- Info Modale -->
+          <div class="col-md-6 infos">
+            <div class="enTete margin-left">
+              <h5 class="margin-top ">{{username}}</h5>
+              <p class="locaSize">{{localisation}}</p>
+            </div>
+            <hr>
+            <div class="row">
+              <h6 class="margin-left1 center">{{titre}}</h6>
+
+            </div>
+            <div class="row margin-top margin-left margin-right" style="max-height: 100px; overflow-y: scroll;">
+              <ul class="listTag badge badge-pill badge-light" *ngFor="let tag of tags; let index = index;">
+                <span class="">{{tag}}</span>
+              </ul>
+            </div>
+            <hr>
+            <div class="row margin-top margin-left">
+                <div id="blocCom">
+                  <ul *ngFor="let comment of commentaires;">
+                    <span class="name">{{comment.name}}</span>:
+                    <span class="comment">{{comment.content}}</span>
+                  </ul>
+                </div>
+            </div>
+
+            <div class="row footer">
+              <span class="margin-left">Vu {{views}}</span>
+              <span class="textDroite">{{date}}</span>
+            </div>
+          </div>
         </div>
-        <hr>
-        <div class="row">
-          <h6 class="margin-left1 center">{{titre}}</h6>
-
-        </div>
-      <div class="row margin-top margin-left margin-right">
-        <ul class="listTag badge badge-pill badge-light" *ngFor="let tag of tags; let index = index;">
-          <span class="">{{tag}}</span>
-        </ul>
-      </div>
-
-      <div class="row footer">
-        <span class="margin-left">Vu {{views}}</span>
-        <span class="textDroite">{{date}}</span>
-
       </div>
     </div>
+  </div>
 </div>
