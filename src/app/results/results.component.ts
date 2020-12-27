@@ -39,7 +39,6 @@ export class ResultsComponent implements OnInit {
         console.log(error);
       },
       () => {
-        console.log(this.images);
         console.log("Images récupérées avec succès");
       }
   );

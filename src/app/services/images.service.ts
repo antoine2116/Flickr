@@ -17,7 +17,7 @@ export class ImagesService {
     var url = "https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1";
 
     url += "&api_key=" + api_key;
-    url += "&per_page=50";
+    url += "&per_page=100";
     url += "&text=" + filtre.text;
     url += filtre.dateMin != undefined ? "&min_upload_date=" + filtre.dateMin : "";
     url += filtre.dateMax != undefined ? "&max_upload_date=" + filtre.dateMax : "";
