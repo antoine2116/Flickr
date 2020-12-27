@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Filtre } from '../shared/filtre.model';
-import { TagsService } from '../tags.service';
+import { Filtre } from '../shared/flickrFiltre.model';
+import { TagsService } from '../services/tags.service';
 
 @Component({
   selector: 'app-research',
@@ -11,11 +11,15 @@ import { TagsService } from '../tags.service';
 export class ResearchComponent implements OnInit {
   @Output() tagEmitter = new EventEmitter<Filtre>();
 
+  // Permet de stocker la liste des tags proposés dans le filtre de la barre de recherche
   tags: string[];
+  // Permet de stocker l'ensembles des paramétre de la recherche
   filtre : Filtre = new Filtre();
+  
   constructor(private tagsService : TagsService) { }
 
   ngOnInit(): void {
+    // On fait un requête au service tagsService permettant de récupérer les tags les plus populaires
     this.tagsService.getTags().subscribe(
       (data) => {
         this.tags = [];
@@ -31,6 +35,7 @@ export class ResearchComponent implements OnInit {
       });
   }
 
+  // Emet un signal pour déclencher la recherches des photos en fonction du filtre
   emitResearch() {
     this.tagEmitter.emit(this.filtre);
   }

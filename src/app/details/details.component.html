@@ -3,38 +3,46 @@
     <div class="modal-content">
       <div class="modal-body p-0">
         <div class="row modalCustom">
-          <div  id="contentImage" class="col-md-6 image">
-            <img id="imgdetail" src="{{url}}">
+          <div  id="contentImage" class="col-md-6 image p-0">
+            <span class="helper"></span>
+            <img id="imgdetail" src="{{imageInfos.url}}">
           </div>
           <!-- Info Modale -->
           <div class="col-md-6 infos">
-            <div class="enTete margin-left">
-              <h5 class="margin-top ">{{username}}</h5>
-              <p class="locaSize">{{localisation}}</p>
+            <div class="enTete">
+            <h5 class="margin-top">
+              <i class="fas fa-lg fa-user-circle"></i>
+                &nbsp; {{imageInfos.username}}
+            </h5>
+              <p class="locaSize">{{imageInfos.localisation}}</p>
             </div>
             <hr>
-            <div class="row">
-              <h6 class="margin-left1 center">{{titre}}</h6>
-
+            <div class="row pl-3 text-center">
+              <h6>{{imageInfos.titre}}</h6>
             </div>
-            <div class="row margin-top margin-left margin-right" style="max-height: 100px; overflow-y: scroll;">
-              <ul class="listTag badge badge-pill badge-light" *ngFor="let tag of tags; let index = index;">
+            <div class="row titre-section">
+              Tags : 
+            </div>
+            <div class="row mt-1 ml-1" style="max-height: 100px; overflow-y: scroll; overflow-x: hidden !important;">
+              <ul class="listTag badge badge-pill badge-light" *ngFor="let tag of imageInfos.tags; let index = index;">
                 <span class="">{{tag}}</span>
               </ul>
             </div>
             <hr>
-            <div class="row margin-top margin-left">
-                <div id="blocCom">
-                  <ul *ngFor="let comment of commentaires;">
+            <div class="row titre-section">
+              Commentaires : 
+            </div>
+            <div class="row margin-top">
+                <div id="blocCom" style="overflow-wrap: break-word;">
+                  <ul *ngFor="let comment of imageInfos.commentaires;">
                     <span class="name">{{comment.name}}</span>:
                     <span class="comment">{{comment.content}}</span>
                   </ul>
                 </div>
             </div>
-
-            <div class="row footer">
-              <span class="margin-left">Vu {{views}}</span>
-              <span class="textDroite">{{date}}</span>
+            <div class="footer d-flex justify-content-between">
+              <div>Vue {{imageInfos.views}} de fois</div>
+              <div class="ml-auto">Publiée le {{imageInfos.date}}</div>
             </div>
           </div>
         </div>

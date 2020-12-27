@@ -1,9 +1,23 @@
 .image {
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
   height: 500px;
-  width: 600px;
+  width: 500px;
   background-color: white;
+  text-align: center;
+  display: block;
+}
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+#imgdetail{
+  width:100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 500px;
+
 }
 
 .infos {
@@ -43,11 +57,10 @@
 }
 
 .footer{
-  height: 50px;
-  width: 100%;
   position: absolute;
   bottom: 0;
-  border-bottom-right-radius: 15px;
+  width: 95%;
+  font-size: 13px;
 }
 
 .textDroite{
@@ -64,13 +77,7 @@
   border-radius: 20px !important;
 }
 
-#imgdetail{
-  width:100%;
-  height: auto;
-  max-height: 500px;
-  object-fit: cover;
 
-}
 #contentImage{
   text-align: center;
   display: table-cell;
@@ -90,4 +97,11 @@
 ul{
   margin: 0.7em;
   padding: 0px;
+}
+
+
+.titre-section {
+  font-size: 12px;
+  color:#3d3d3d;
+  padding-left: 20px;
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit, Output, EventEmitter, ViewChild} from '@angular/core';
-import { ImagesService } from '../images.service';
+import { ImagesService } from '../services/images.service';
 import { FlickrImage} from '../shared/flickrImage.model'
 import {DetailsComponent} from "../details/details.component";
 
@@ -14,14 +14,14 @@ export class ResultsComponent implements OnInit {
 
   @ViewChild(DetailsComponent) detailsComponent: DetailsComponent;
 
+  // Permet des stocker l'ensembles des images résultant de la recherche
   images: FlickrImage[] = [];
-  url = "";
-  id = 0;
-  imgDetail: any = {};
 
   ngOnInit(): void {
   }
 
+  // Méthode délencher par le clique sur le bouton recherche
+  // Appel les service ImagesService qui recherhe les photos associées filtre
   research($event): void {
     this.imagesService.getImages($event).subscribe(
       (data) => {
@@ -30,9 +30,7 @@ export class ResultsComponent implements OnInit {
           var serverId: string = el.server;
           var id: string = el.id;
           var secret: string = el.secret;
-
           var url: string = `https://live.staticflickr.com/${serverId}/${id}_${secret}.jpg`;
-
           var image = new FlickrImage(id, url);
           this.images.push(image);
         });
@@ -41,19 +39,16 @@ export class ResultsComponent implements OnInit {
         console.log(error);
       },
       () => {
+        console.log(this.images);
         console.log("Images récupérées avec succès");
       }
   );
   }
 
-  @Output() tagEmitter = new EventEmitter<string>();
-
-
+  // Délenche le chargement du détails d'une photo
   imgEmitter(e) {
     this.detailsComponent.afficherDetails(e);
   }
-
-
 }
 
 

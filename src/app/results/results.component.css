@@ -14,3 +14,7 @@
   margin-right:auto;
   margin-bottom: 10px;
 }
+
+.thumbnail:hover {
+  cursor: pointer;
+}
