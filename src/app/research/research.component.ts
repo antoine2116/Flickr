@@ -14,9 +14,9 @@ export class ResearchComponent implements OnInit {
   // Permet de stocker la liste des tags proposés dans le filtre de la barre de recherche
   tags: string[];
   // Permet de stocker l'ensembles des paramétre de la recherche
-  filtre : Filtre = new Filtre();
-  
-  constructor(private tagsService : TagsService) { }
+  filtre: Filtre = new Filtre();
+
+  constructor(private tagsService: TagsService) { }
 
   ngOnInit(): void {
     // On fait un requête au service tagsService permettant de récupérer les tags les plus populaires
@@ -26,17 +26,16 @@ export class ResearchComponent implements OnInit {
         data.hottags.tag.forEach(el => {
           this.tags.push(el._content);
         });
-      }, 
+      },
       (error) => {
         console.log(error);
       },
       () => {
-        console.log("Tags récupéres avec succès ! ");
+        console.log('Tags récupéres avec succès ! ');
       });
   }
-
   // Emet un signal pour déclencher la recherches des photos en fonction du filtre
-  emitResearch() {
+  emitResearch(): void {
     this.tagEmitter.emit(this.filtre);
   }
 }

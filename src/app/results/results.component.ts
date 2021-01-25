@@ -1,7 +1,8 @@
 import {Component, OnInit, Output, EventEmitter, ViewChild} from '@angular/core';
 import { ImagesService } from '../services/images.service';
-import { FlickrImage} from '../shared/flickrImage.model'
-import {DetailsComponent} from "../details/details.component";
+import { FlickrImage} from '../shared/flickrImage.model';
+import {DetailsComponent} from '../details/details.component';
+import {CommonService} from '../services/common.service';
 
 @Component({
   selector: 'app-results',
@@ -10,28 +11,28 @@ import {DetailsComponent} from "../details/details.component";
 })
 
 export class ResultsComponent implements OnInit {
-  constructor(private imagesService: ImagesService) { }
+  constructor(private imagesService: ImagesService, private commonService: CommonService) { }
 
   @ViewChild(DetailsComponent) detailsComponent: DetailsComponent;
 
   // Permet des stocker l'ensembles des images résultant de la recherche
   images: FlickrImage[] = [];
 
-  ngOnInit(): void {
+  ngOnInit() : void {
   }
 
   // Méthode délencher par le clique sur le bouton recherche
   // Appel les service ImagesService qui recherhe les photos associées filtre
-  research($event): void {
+  research($event) : void {
     this.imagesService.getImages($event).subscribe(
       (data) => {
         this.images = [];
         data.photos.photo.forEach(el => {
-          var serverId: string = el.server;
-          var id: string = el.id;
-          var secret: string = el.secret;
-          var url: string = `https://live.staticflickr.com/${serverId}/${id}_${secret}.jpg`;
-          var image = new FlickrImage(id, url);
+          const serverId: string = el.server;
+          const id: string = el.id;
+          const secret: string = el.secret;
+          const url = `https://live.staticflickr.com/${serverId}/${id}_${secret}.jpg`;
+          const image = new FlickrImage(id, url);
           this.images.push(image);
         });
       },
@@ -39,13 +40,25 @@ export class ResultsComponent implements OnInit {
         console.log(error);
       },
       () => {
-        console.log("Images récupérées avec succès");
+        console.log('Images récupérées avec succès');
       }
-  );
+    );
+
+    this.commonService.getImages().subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        console.log('Images bdd récupérées avec succès');
+      }
+    );
   }
 
   // Délenche le chargement du détails d'une photo
-  imgEmitter(e) {
+  imgEmitter(e) : void {
     this.detailsComponent.afficherDetails(e);
   }
 }

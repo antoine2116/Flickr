@@ -5,7 +5,7 @@ import { ResearchComponent } from './research/research.component';
 import { ResultsComponent } from './results/results.component';
 import { DetailsComponent } from './details/details.component';
 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 
