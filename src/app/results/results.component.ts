@@ -43,8 +43,7 @@ export class ResultsComponent implements OnInit {
         console.log('Images récupérées avec succès');
       }
     );
-
-    this.commonService.getImages().subscribe(
+    this.commonService.PostImages(this.images,$event).subscribe(
       (data) => {
         console.log(data);
       },
