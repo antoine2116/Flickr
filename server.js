@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 var mongo = require('mongoose')
 var cors = require('cors')
 
+// Connexion à la base MongoDB
 var db = mongo.connect("mongodb://localhost:27017/flickr", function (err, res) {
   if (err) {
     console.log(err)
@@ -12,6 +13,7 @@ var db = mongo.connect("mongodb://localhost:27017/flickr", function (err, res) {
   }
 })
 
+// Configuration de l'API
 var app = express()
 app.use(cors())
 app.use(bodyParser());
@@ -26,38 +28,61 @@ app.use(function (req, res, next) {
   next();
 });
 
-var Schema = mongo.Schema;
 
+// Déclaration du model
+var Schema = mongo.Schema;
 var imageSchema = new Schema({
+  id_flickr: {type: String},
+  created_on: {type: String},
   url : {type: String},
-  date_research: {type: String},
-  contexte: {type: String},
+  context: {type: String},
   nsfw: {type: String},
-  tags : {type: String},
   text: {type: String},
   type: {type: String}
 
 }, {versionKey: false});
 
-var imageModel = mongo.model('images', imageSchema, 'images')
+var imageModel = mongo.model('images', imageSchema, 'images');
 
-app.get("/api/getImages", function(req, res) {
-  imageModel.find({}, function (err, data) {
+// Permet de récupérer les images stockées dans la base de données
+app.post("/api/getImages", function(req, res) {
+  // On supprime les images datant de plus de 6h
+  let dateMax = new Date();
+  dateMax.setHours(dateMax.getHours() - 6);
+  imageModel.remove({
+    created_on : {
+      $lt: dateMax.toISOString()
+    }
+  }, (err, data) => {
     if (err) {
-      res.send(err)
+      console.log(err)
+    } else if (data) {
+      console.log(data);
     }
-    else {
-      res.send(data)
-      console.log(res.body);
+  });
+
+  // On recherche les images correspondant au filtre
+  const filtre = req.body;
+  imageModel.find({
+    context: filtre.contexte,
+    nsfw: filtre.nsfw,
+    text: filtre.text,
+    type: filtre.type
+  }, (err, images) => {
+    if (images) {
+      res.status(200).json(images);
     }
-  })
+  });
+
 });
 
-app.post("/api/PostImages", function (req,res){
+// Permet d'enregistrer les images dans la base de données
+app.post("/api/postImages", function (req,res){
+  // On ajoute les nouvelles images
   imageModel.insertMany(req.body);
 });
 
 app.listen(8080, function () {
-})
+});
 
-console.log("API Mongo écoute sur le port 8080 ! ")
+console.log("L'API Mongo écoute sur le port 8080 ! ");

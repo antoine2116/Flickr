@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ImagesService} from "./images.service";
 import {FlickrImage} from "../shared/flickrImage.model";
+import {Filtre} from '../shared/flickrFiltre.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,18 +12,26 @@ export class CommonService {
 
   constructor(private http: HttpClient) { }
 
-  getImages() : Observable<any> {
-    return this.http.get('http://localhost:8080/api/getImages/');
+  // Appel à l'API permettant de récupérer les images en cache
+  getImages(filtre : Filtre) : Observable<any> {
+    return this.http.post('http://localhost:8080/api/getImages/', filtre);
   }
 
-  PostImages(imgs : FlickrImage[],event: any) : Observable<any> {
-    var sendImgs = [];
-  for(var img in imgs){
-    var data = {id:imgs[img].id,date_research:new Date(), url:imgs[img].url,contexte: event.contexte,nsfw:event.nsfw,text:event.text,type:event.type,tag:event.tag,};
-    sendImgs.push(data);
-  }
-  console.log(sendImgs);
-    return this.http.post('http://localhost:8080/api/PostImages/',sendImgs);
-
+  // Appel à l'API permettant d'enregistrer les images dans le cache
+  postImages(imgs: FlickrImage[], filtre: Filtre) : Observable<any> {
+    const sendImgs = [];
+    imgs.forEach(img => {
+      const data = {
+        id_flickr: img.id,
+        created_on: new Date(),
+        url: img.url,
+        context: filtre.contexte,
+        nsfw: filtre.nsfw,
+        text: filtre.text,
+        type: filtre.type
+      };
+      sendImgs.push(data);
+    });
+    return this.http.post('http://localhost:8080/api/postImages/', sendImgs);
   }
 }

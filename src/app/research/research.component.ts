@@ -31,7 +31,6 @@ export class ResearchComponent implements OnInit {
         console.log(error);
       },
       () => {
-        console.log('Tags récupéres avec succès ! ');
       });
   }
   // Emet un signal pour déclencher la recherches des photos en fonction du filtre
