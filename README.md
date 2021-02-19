@@ -10,3 +10,7 @@ Appuyez sur le bouton plus pour afficher le filtre de la recherche. Les tags pro
 ## Détails
 
 Cliquez sur une des photos afin d'afficher des informations supplémentaires ainsi que les commentaires postés.
+
+## Gestion du cache
+
+L'application est fournie avec une API Node.JS permettant de stocker temporairement les images de Flickr dans un cache
